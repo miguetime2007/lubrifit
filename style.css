@@ -1,0 +1,513 @@
+/* =========================================
+   1. CONFIGURACIÓN GLOBAL Y FUENTES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 { 
+    font-family: 'Oswald', sans-serif; 
+}
+
+/* Espacio para que el contenido no quede debajo del menú sticky */
+main {
+    padding-top: 20px;
+}
+
+/* =========================================
+   2. NAVEGACIÓN (HEADER)
+   ========================================= */
+header {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    border-bottom: 2px solid #ffc107;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-container h1 {
+    font-size: 1.4rem;
+    margin-left: 15px;
+    color: #ffffff !important;
+    transition: 0.3s;
+}
+
+.logo-container:hover h1 {
+    color: #ffc107 !important;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+    transform: scale(1.02);
+}
+
+.logo-img {
+    max-width: 60px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffc107;
+}
+
+/* =========================================
+   3. SECCIÓN HERO (BANNER)
+   ========================================= */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Ip.PNG'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    border-bottom: 5px solid #ffc107;
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #ffffff !important;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+    max-width: 850px;
+    margin: 0 auto 25px;
+}
+
+.btn-primary {
+    background-color: #ffc107;
+    color: #000;
+    padding: 14px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   4. SECCIÓN SERVICIOS
+   ========================================= */
+#servicios, #proyectos {
+    padding: 100px 5%;
+    max-width: 1600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h3 {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+h3::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: #ffc107;
+    margin: 15px auto 0;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+/* --- ESTILO DE LAS TARJETAS DE SERVICIOS (EL JEFE) --- */
+article {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+    cursor: pointer;
+    
+    /* ESTA LÍNEA ES LA CLAVE: Dice qué queremos animar y cuánto tiempo */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease;
+}
+
+/* --- LO QUE PASA CUANDO EL MOUSE TOCA LA TARJETA --- */
+article:hover {
+    /* 1. La tarjeta sube */
+    transform: translateY(-20px); 
+    
+    /* 2. El borde se ilumina en amarillo */
+    border-color: #ffc107; 
+    
+    /* 3. Aparece una sombra amarilla que le da profundidad */
+    box-shadow: 0 20px 40px rgba(255, 193, 7, 0.2); 
+}
+
+/* Efecto en la imagen dentro del servicio */
+.img-servicio {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    filter: grayscale(100%); /* Empieza en blanco y negro */
+    transition: 0.5s ease;
+}
+
+article:hover .img-servicio {
+    filter: grayscale(0%); /* Cobra color al pasar el mouse */
+    transform: scale(1.1); /* La imagen crece un poquito adentro */
+}
+
+.img-servicio {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: 0.5s;
+}
+
+article:hover .img-servicio {
+    filter: grayscale(0%);
+}
+
+article h4 {
+    color: #ffc107;
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+}
+
+article p {
+    color: #ccc;
+    padding: 0 20px 25px;
+}
+
+/* =========================================
+   5. SECCIÓN PROYECTOS (EXPANDIBLES)
+   ========================================= */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+.proyecto-item {
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.5s ease;
+    cursor: pointer;
+    border: 1px solid #222;
+    outline: none;
+}
+
+.proyecto-card {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    transition: 0.5s;
+}
+
+/* Imágenes de proyectos */
+.card-fontibon { background-image: linear-gradient(rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 100%), url('acuaducto.jpeg'); }
+.card-ibague { background-image: linear-gradient(rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 100%), url('DIC.jpeg'); }
+.card-otec { background-image: linear-gradient(rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 100%), url('otec.jpeg'); }
+
+.proyecto-proceso {
+    max-height: 0;
+    opacity: 0;
+    transition: 0.5s ease;
+    background: #111;
+    text-align: left;
+}
+
+.proyecto-item:focus .proyecto-card { height: 300px; }
+
+.proyecto-item:focus .proyecto-proceso {
+    max-height: 300px;
+    opacity: 1;
+    padding: 25px 30px;
+}
+
+.proyecto-proceso h5 { color: #ffc107; margin-bottom: 10px; }
+
+/* =========================================
+   6. CONTACTO Y STATS
+   ========================================= */
+.seccion-contacto { padding: 100px 5%; background: #000; }
+
+.contacto-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.formulario-contacto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario-contacto input, .formulario-contacto textarea {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 15px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.btn-enviar {
+    background: #ffc107;
+    color: #000;
+    padding: 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* TARJETAS DE ESTADÍSTICAS */
+.stat-card {
+    background: #ffffff;
+    width: 100%;          /* Ocupa todo el ancho disponible */
+    max-width: none;      /* Quitamos cualquier límite anterior */
+    margin: 0;            /* Quitamos márgenes laterales para que toquen los bordes */
+    padding: 60px 5%;     /* Más espacio arriba y abajo para que se vea robusto */
+    text-align: center;
+    color: #121212;
+    border-top: 1px solid #ddd;
+    border-bottom: 5px solid #ffc107; /* Línea gruesa abajo para toque industrial */
+    
+    /* Mantenemos el movimiento */
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+/* --- EFECTO AL PASAR EL MOUSE --- */
+.stat-card:hover {
+    background-color: #f9f9f9;
+    /* En lugar de subir, hacemos que el borde amarillo brille más */
+    box-shadow: inset 0 0 20px rgba(255, 193, 7, 0.1); 
+}
+
+/* Un toque extra: que el número brille un poco al hacer hover */
+.stat-card:hover h2 {
+    color: #ffc107 !important; /* El número cambia a amarillo al tocar la tarjeta */
+    transition: 0.3s;
+}
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;         /* Viewport Width: Ancho total de la pantalla */
+    margin-left: calc(-50vw + 50%); /* Truco para romper el margen del contenedor padre */
+    margin-top: 80px;
+    gap: 0;               /* Pegamos los bloques para que parezcan una sola torre */
+}
+/* El número grande en el bloque */
+.stat-card h2 {
+    font-size: 4.5rem;    /* Más grande para que llene el espacio ancho */
+    color: #121212 !important;
+    margin: 0;
+}
+
+.stat-card p {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;  /* Texto más separado para elegancia */
+    color: #555 !important;
+}
+/* Las tarjetas pares (la 2, la 4...) serán negras con texto amarillo */
+.stat-card:nth-child(even) {
+    background-color: #111;
+    color: #ffffff;
+    border-top: 1px solid #222;
+}
+
+.stat-card:nth-child(even) h2 {
+    color: #ffc107 !important;
+}
+
+.stat-card:nth-child(even) p {
+    color: #888 !important;
+}
+
+/* =========================================
+   7. ELEMENTOS FLOTANTES (WA / MODALES)
+   ========================================= */
+.btn-whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+/* Modales genéricos */
+.modal-servicio, .modal-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+    z-index: 10001;
+}
+
+.modal-servicio:target, .modal-container:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+/* Busca este bloque en tu CSS y cámbialo */
+.card-terrenos h3 {
+    color: #ffffff !important; /* Blanco puro */
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.card-terrenos p {
+    color: #cccccc; /* Gris claro */
+    font-size: 0.9rem;
+}
+/* Busca la regla 'article' y asegúrate de que tenga esto */
+article {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* El efecto de elevarse */
+article:hover {
+    transform: translateY(-15px); /* Se eleva 15 píxeles */
+    box-shadow: 0 15px 30px rgba(255, 193, 7, 0.3); /* Sombra amarilla brillante */
+    border-color: #ffc107;
+}
+/* --- SECCIÓN DE IDENTIDAD (MISIÓN Y VISIÓN) --- */
+.seccion-identidad {
+    padding: 100px 5%;
+    background-color: #121212; /* Fondo oscuro que hace juego */
+    text-align: center;
+}
+
+.identidad-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.logo-identidad {
+    max-width: 120px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.2));
+}
+
+.linea-amarilla {
+    width: 80px;
+    height: 4px;
+    background: #ffc107;
+    margin: 20px auto 40px;
+}
+
+/* El Grid de Misión y Visión */
+.identidad-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}
+
+.identidad-item {
+    flex: 1;
+    min-width: 300px;
+    background: #1a1a1a; /* Un gris muy oscuro para separar del fondo */
+    padding: 40px;
+    border-radius: 4px;
+    border-top: 4px solid #ffc107; /* El toque industrial arriba */
+    transition: 0.4s;
+}
+
+.identidad-item:hover {
+    background: #222;
+    transform: translateY(-5px);
+}
+
+.icon-industrial {
+    display: block;
+    color: #ffc107;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.identidad-item p {
+    color: #ffffff; /* Letra blanca para que se vea perfecto */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
